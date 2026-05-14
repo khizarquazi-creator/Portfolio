@@ -24,12 +24,12 @@ export const useXVideo = (user, id) => {
         const tweet = json?.tweet || {};
         const videos = tweet?.media?.videos || [];
         if (!videos.length) throw new Error("Tweet has no video");
-        const v = videos[0];
+        const mp4Video = videos.find((video) => video.format === "video/mp4") || videos[0];
         const result = {
-          mp4: v.url,
-          thumbnail: v.thumbnail_url,
-          width: v.width,
-          height: v.height,
+          mp4: mp4Video.url,
+          thumbnail: mp4Video.thumbnail_url,
+          width: mp4Video.width,
+          height: mp4Video.height,
           author: tweet?.author?.screen_name || user,
         };
         cache.set(key, result);

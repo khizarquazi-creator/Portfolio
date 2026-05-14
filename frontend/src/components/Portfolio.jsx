@@ -48,6 +48,7 @@ const XVideoPlayer = ({ user, id, poster }) => {
     <video
       controls
       autoPlay
+      muted
       playsInline
       preload="metadata"
       src={data.mp4}
