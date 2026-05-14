@@ -26,10 +26,10 @@ export const Process = () => {
       style={{ borderTop: "1px solid var(--border)", borderBottom: "1px solid var(--border)" }}
       data-testid="process-section"
     >
-      <div className="max-w-7xl mx-auto px-6 md:px-12">
+      <div className="max-w-7xl mx-auto px-5 sm:px-6 md:px-12">
         <Reveal>
           <p className="overline mb-5">03 — Process</p>
-          <h2 className="text-3xl sm:text-4xl md:text-5xl tracking-tight leading-[1.05] font-medium max-w-[18ch]">
+          <h2 className="display text-3xl sm:text-4xl md:text-5xl lg:text-6xl tracking-tight leading-[0.95] max-w-[18ch]">
             Three steps. No noise. No surprises.
           </h2>
         </Reveal>
@@ -47,7 +47,7 @@ export const Process = () => {
                 data-testid={`process-step-${i}`}
               >
                 <div
-                  className="text-5xl md:text-6xl font-medium tracking-tight"
+                  className="display text-5xl md:text-6xl lg:text-7xl tracking-tight"
                   style={{ color: "var(--accent)" }}
                 >
                   {s.n}

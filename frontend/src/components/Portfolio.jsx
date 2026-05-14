@@ -114,14 +114,14 @@ export const Portfolio = () => {
   return (
     <section
       id="portfolio"
-      className="relative py-24 md:py-40"
+      className="relative py-20 md:py-40"
       data-testid="portfolio-section"
     >
-      <div className="max-w-7xl mx-auto px-6 md:px-12">
-        <div className="flex items-end justify-between mb-14 md:mb-20">
+      <div className="max-w-7xl mx-auto px-5 sm:px-6 md:px-12">
+        <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-6 mb-12 md:mb-20">
           <Reveal>
             <p className="overline mb-5">02 — Hall of Fame</p>
-            <h2 className="text-3xl sm:text-4xl md:text-5xl tracking-tight leading-[1.05] font-medium max-w-[16ch]">
+            <h2 className="display text-3xl sm:text-4xl md:text-5xl lg:text-6xl tracking-tight leading-[0.95] max-w-[16ch]">
               Selected work. Hover to preview.
             </h2>
           </Reveal>

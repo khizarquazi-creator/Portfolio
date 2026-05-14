@@ -15,14 +15,14 @@ export const Pricing = ({ onContact }) => {
   return (
     <section
       id="pricing"
-      className="relative py-24 md:py-40"
+      className="relative py-20 md:py-40"
       data-testid="pricing-section"
     >
-      <div className="max-w-7xl mx-auto px-6 md:px-12">
+      <div className="max-w-7xl mx-auto px-5 sm:px-6 md:px-12">
         <div className="grid md:grid-cols-12 gap-10 items-start">
           <Reveal className="md:col-span-5">
             <p className="overline mb-5">04 — Pricing</p>
-            <h2 className="text-3xl sm:text-4xl md:text-5xl tracking-tight leading-[1.05] font-medium">
+            <h2 className="display text-3xl sm:text-4xl md:text-5xl lg:text-6xl tracking-tight leading-[0.95]">
               One plan. Shaped to your project.
             </h2>
             <p className="muted mt-6 max-w-[40ch] leading-relaxed">
@@ -62,7 +62,7 @@ export const Pricing = ({ onContact }) => {
                 </span>
               </div>
 
-              <h3 className="mt-8 text-4xl md:text-5xl tracking-tight font-medium">
+              <h3 className="display mt-8 text-4xl md:text-5xl lg:text-6xl tracking-tight leading-[0.95]">
                 Custom Pricing
               </h3>
               <p className="muted mt-3">Tailored to every project.</p>

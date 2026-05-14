@@ -4,14 +4,14 @@ export const About = () => {
   return (
     <section
       id="about"
-      className="relative py-24 md:py-40"
+      className="relative py-20 md:py-40"
       data-testid="about-section"
     >
-      <div className="max-w-7xl mx-auto px-6 md:px-12">
+      <div className="max-w-7xl mx-auto px-5 sm:px-6 md:px-12">
         <div className="grid md:grid-cols-12 gap-10 md:gap-16">
           <Reveal className="md:col-span-4">
             <p className="overline mb-6">01 — About</p>
-            <h2 className="text-3xl md:text-4xl tracking-tight leading-[1.05] font-medium">
+            <h2 className="display text-3xl md:text-4xl lg:text-5xl tracking-tight leading-[1.0]">
               A quiet craft, sharpened over thousands of timeline hours.
             </h2>
           </Reveal>

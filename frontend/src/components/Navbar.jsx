@@ -30,7 +30,7 @@ export const Navbar = () => {
       }}
       data-testid="site-navbar"
     >
-      <nav className="max-w-7xl mx-auto px-6 md:px-12 h-16 md:h-20 flex items-center justify-between">
+      <nav className="max-w-7xl mx-auto px-5 sm:px-6 md:px-12 h-16 md:h-20 flex items-center justify-between">
         <Link to="/" className="flex items-center gap-2 group" data-testid="nav-logo-link">
           <span
             className="inline-block w-2 h-2 rounded-full"

@@ -8,11 +8,11 @@ export const Footer = ({ onContact }) => {
       style={{ borderTop: "1px solid var(--border)" }}
       data-testid="site-footer"
     >
-      <div className="max-w-7xl mx-auto px-6 md:px-12">
+      <div className="max-w-7xl mx-auto px-5 sm:px-6 md:px-12">
         <div className="grid md:grid-cols-12 gap-10">
           <div className="md:col-span-7">
             <p className="overline mb-6">Have a project?</p>
-            <h3 className="text-3xl sm:text-4xl md:text-6xl tracking-tight leading-[1.0] font-medium max-w-[14ch]">
+            <h3 className="display text-3xl sm:text-5xl md:text-6xl lg:text-7xl tracking-tight leading-[0.92] max-w-[14ch]">
               Let's make something quiet and confident.
             </h3>
             <div className="mt-10">

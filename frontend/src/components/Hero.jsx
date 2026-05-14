@@ -6,18 +6,18 @@ export const Hero = ({ onContact }) => {
   return (
     <section
       id="hero"
-      className="relative min-h-[100svh] flex items-center pt-32 pb-36 md:pb-40 overflow-hidden"
+      className="relative min-h-[100svh] overflow-hidden flex flex-col"
       data-testid="hero-section"
     >
       <div className="hero-glow" />
       <div className="absolute inset-0 grid-bg opacity-[0.35]" aria-hidden="true" />
 
-      <div className="relative max-w-7xl mx-auto px-6 md:px-12 w-full">
+      <div className="relative max-w-7xl mx-auto px-5 sm:px-6 md:px-12 w-full flex-1 flex flex-col justify-center pt-28 sm:pt-32 pb-10 sm:pb-12">
         <motion.div
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7 }}
-          className="flex items-center gap-3 mb-10"
+          className="flex items-center gap-3 mb-8 md:mb-12"
         >
           <span
             className="inline-block w-1.5 h-1.5 rounded-full"
@@ -27,23 +27,23 @@ export const Hero = ({ onContact }) => {
         </motion.div>
 
         <h1
-          className="text-[44px] sm:text-[68px] md:text-[92px] lg:text-[108px] leading-[0.95] tracking-[-0.035em] font-medium max-w-[18ch]"
+          className="display uppercase text-[38px] sm:text-[64px] md:text-[88px] lg:text-[104px] xl:text-[112px] leading-[0.86] tracking-[-0.05em] max-w-[12ch]"
           data-testid="hero-headline"
         >
           {"Turning raw clips into".split(" ").map((w, i) => (
             <motion.span
               key={i}
-              initial={{ opacity: 0, y: 40 }}
+              initial={{ opacity: 0, y: 60 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.85, delay: 0.1 + i * 0.06, ease: [0.22, 0.85, 0.3, 1] }}
-              className="inline-block mr-[0.22em]"
+              className="inline-block mr-[0.18em]"
             >
               {w}
             </motion.span>
           ))}
           <br />
           <motion.span
-            initial={{ opacity: 0, y: 40 }}
+            initial={{ opacity: 0, y: 60 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.85, delay: 0.45, ease: [0.22, 0.85, 0.3, 1] }}
             className="inline-block"
@@ -57,7 +57,7 @@ export const Hero = ({ onContact }) => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.7 }}
-          className="muted mt-10 max-w-[52ch] text-[16px] md:text-[17px] leading-relaxed"
+          className="muted mt-8 md:mt-12 max-w-[52ch] text-[15px] md:text-[17px] leading-relaxed"
         >
           Long-form video editing for creators, businesses and personal brands.
           Quiet, considered cuts. Clean motion. Stories that hold attention.
@@ -67,7 +67,7 @@ export const Hero = ({ onContact }) => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.85 }}
-          className="mt-12 flex flex-wrap items-center gap-4"
+          className="mt-8 md:mt-12 flex flex-wrap items-center gap-3 sm:gap-4"
         >
           <MagneticButton onClick={onContact} testId="hero-cta-button">
             Let's Talk <ArrowUpRight size={16} />
@@ -80,31 +80,26 @@ export const Hero = ({ onContact }) => {
             View Work
           </a>
         </motion.div>
+      </div>
 
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 1.2, delay: 1.2 }}
-          className="absolute bottom-10 left-6 md:left-12 flex items-center gap-3 muted"
-          data-testid="scroll-indicator"
-        >
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 1.2, delay: 1.2 }}
+        className="relative max-w-7xl mx-auto px-5 sm:px-6 md:px-12 w-full pb-6 sm:pb-8 md:pb-10 flex items-center justify-between"
+      >
+        <div className="flex items-center gap-3 muted" data-testid="scroll-indicator">
           <span className="overline" style={{ fontSize: 10 }}>
             Scroll
           </span>
           <ArrowDown size={14} className="scroll-nudge" />
-        </motion.div>
-
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 1.2, delay: 1.2 }}
-          className="absolute bottom-10 right-6 md:right-12 hidden md:flex items-center gap-6 overline"
-        >
+        </div>
+        <div className="hidden md:flex items-center gap-6 overline">
           <span>Adobe Premiere Pro</span>
           <span style={{ opacity: 0.4 }}>/</span>
           <span>After Effects</span>
-        </motion.div>
-      </div>
+        </div>
+      </motion.div>
     </section>
   );
 };
