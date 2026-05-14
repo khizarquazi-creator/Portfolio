@@ -282,7 +282,7 @@ select {
     border-radius: 14px;
     border: 1px solid var(--border);
     background: var(--surface);
-    aspect-ratio: 16 / 10;
+    aspect-ratio: 16 / 9;
 }
 .portfolio-card img,
 .portfolio-card video {

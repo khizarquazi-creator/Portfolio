@@ -1,12 +1,79 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { ArrowUpRight, Play, X } from "lucide-react";
+import { ArrowUpRight, Play, X, Loader2 } from "lucide-react";
 import { Reveal } from "./Reveal";
 import { PROJECTS } from "../lib/content";
-import { YouTubeEmbed, TwitterEmbed } from "./VideoEmbed";
+import { useXVideo } from "../lib/useXVideo";
+
+const YouTubeEmbed = ({ id }) => (
+  <div className="w-full" style={{ aspectRatio: "16 / 9", background: "#000" }}>
+    <iframe
+      title="YouTube video"
+      src={`https://www.youtube.com/embed/${id}?autoplay=1&rel=0&modestbranding=1&playsinline=1`}
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+      allowFullScreen
+      style={{ width: "100%", height: "100%", border: 0 }}
+    />
+  </div>
+);
+
+const XVideoPlayer = ({ user, id, poster }) => {
+  const { data, error } = useXVideo(user, id);
+  if (error) {
+    return (
+      <div
+        className="w-full flex items-center justify-center text-white/80 text-sm"
+        style={{ aspectRatio: "16 / 9", background: "#000" }}
+      >
+        Could not load video. <a
+          href={`https://x.com/${user}/status/${id}`}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="ml-2 underline"
+        >Open on X ↗</a>
+      </div>
+    );
+  }
+  if (!data) {
+    return (
+      <div
+        className="w-full flex items-center justify-center text-white/60"
+        style={{ aspectRatio: "16 / 9", background: "#000" }}
+      >
+        <Loader2 className="animate-spin" size={20} />
+      </div>
+    );
+  }
+  return (
+    <video
+      controls
+      autoPlay
+      playsInline
+      preload="metadata"
+      src={data.mp4}
+      poster={poster || data.thumbnail}
+      style={{
+        width: "100%",
+        height: "auto",
+        maxHeight: "78vh",
+        display: "block",
+        background: "#000",
+      }}
+    />
+  );
+};
+
+// Resolves the best poster for each project (X thumbnail or fallback to provided poster)
+const useProjectPoster = (project) => {
+  const isX = project.type === "twitter";
+  const { data } = useXVideo(isX ? project.user : null, isX ? project.id : null);
+  if (isX && data?.thumbnail) return data.thumbnail;
+  return project.poster;
+};
 
 const Card = ({ p, index, onOpen }) => {
   const [hover, setHover] = useState(false);
+  const poster = useProjectPoster(p);
   return (
     <Reveal delay={index * 0.06}>
       <motion.button
@@ -19,7 +86,7 @@ const Card = ({ p, index, onOpen }) => {
         whileHover={{ y: -4 }}
         transition={{ duration: 0.4, ease: [0.22, 0.85, 0.3, 1] }}
       >
-        <img src={p.poster} alt={p.title} loading="lazy" />
+        <img src={poster} alt={p.title} loading="lazy" />
         <div
           className="absolute inset-0 pointer-events-none"
           style={{
@@ -61,6 +128,13 @@ const Card = ({ p, index, onOpen }) => {
 };
 
 const VideoModal = ({ project, onClose }) => {
+  useEffect(() => {
+    if (!project) return;
+    const onKey = (e) => e.key === "Escape" && onClose();
+    document.addEventListener("keydown", onKey);
+    return () => document.removeEventListener("keydown", onKey);
+  }, [project, onClose]);
+
   return (
     <AnimatePresence>
       {project && (
@@ -70,7 +144,7 @@ const VideoModal = ({ project, onClose }) => {
           exit={{ opacity: 0 }}
           transition={{ duration: 0.3 }}
           className="fixed inset-0 z-[100] flex items-center justify-center p-4 md:p-10"
-          style={{ background: "rgba(0,0,0,0.85)", backdropFilter: "blur(12px)" }}
+          style={{ background: "rgba(0,0,0,0.88)", backdropFilter: "blur(14px)" }}
           onClick={onClose}
           data-testid="video-modal"
         >
@@ -107,15 +181,13 @@ const VideoModal = ({ project, onClose }) => {
 
             <div
               className="rounded-2xl overflow-hidden"
-              style={{ background: "#0a0a0a", border: "1px solid rgba(255,255,255,0.08)" }}
+              style={{ background: "#000", border: "1px solid rgba(255,255,255,0.08)" }}
             >
-              <div className="p-4 md:p-6">
-                {project.type === "youtube" ? (
-                  <YouTubeEmbed id={project.id} />
-                ) : (
-                  <TwitterEmbed id={project.id} user={project.user} />
-                )}
-              </div>
+              {project.type === "youtube" ? (
+                <YouTubeEmbed id={project.id} />
+              ) : (
+                <XVideoPlayer user={project.user} id={project.id} poster={project.poster} />
+              )}
             </div>
 
             <div className="mt-4 flex items-center justify-end">
@@ -139,10 +211,12 @@ const VideoModal = ({ project, onClose }) => {
 export const Portfolio = () => {
   const [active, setActive] = useState(null);
 
-  // Lock body scroll while modal open
-  if (typeof window !== "undefined") {
+  useEffect(() => {
     document.documentElement.style.overflow = active ? "hidden" : "";
-  }
+    return () => {
+      document.documentElement.style.overflow = "";
+    };
+  }, [active]);
 
   return (
     <section

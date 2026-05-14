@@ -4,11 +4,13 @@ from starlette.middleware.cors import CORSMiddleware
 from motor.motor_asyncio import AsyncIOMotorClient
 import os
 import logging
+import time
 from pathlib import Path
 from pydantic import BaseModel, Field, ConfigDict, EmailStr
-from typing import List, Optional
+from typing import List, Optional, Dict, Any
 import uuid
 from datetime import datetime, timezone
+import requests
 
 
 ROOT_DIR = Path(__file__).parent
@@ -103,6 +105,52 @@ async def list_contact_submissions():
         if isinstance(it.get('created_at'), str):
             it['created_at'] = datetime.fromisoformat(it['created_at'])
     return items
+
+
+# ---------- X (Twitter) video metadata ----------
+_X_CACHE: Dict[str, Dict[str, Any]] = {}
+_X_CACHE_TTL = 60 * 60 * 24  # 24h
+
+
+@api_router.get("/x-video/{user}/{tweet_id}")
+async def x_video_metadata(user: str, tweet_id: str):
+    cache_key = f"{user}/{tweet_id}"
+    now = time.time()
+    cached = _X_CACHE.get(cache_key)
+    if cached and now - cached.get("_at", 0) < _X_CACHE_TTL:
+        return {k: v for k, v in cached.items() if k != "_at"}
+
+    try:
+        resp = requests.get(
+            f"https://api.fxtwitter.com/{user}/status/{tweet_id}",
+            timeout=8,
+            headers={"User-Agent": "Mozilla/5.0 YousufHakimPortfolio/1.0"},
+        )
+        if resp.status_code != 200:
+            raise HTTPException(status_code=502, detail=f"fxtwitter upstream {resp.status_code}")
+        data = resp.json()
+        tweet = data.get("tweet") or {}
+        media = tweet.get("media") or {}
+        videos = media.get("videos") or []
+        if not videos:
+            raise HTTPException(status_code=404, detail="Tweet has no video")
+        # Pick highest-quality variant returned by fxtwitter
+        v = videos[0]
+        result = {
+            "mp4": v.get("url"),
+            "thumbnail": v.get("thumbnail_url"),
+            "width": v.get("width"),
+            "height": v.get("height"),
+            "duration_ms": v.get("duration"),
+            "author": (tweet.get("author") or {}).get("screen_name") or user,
+        }
+        _X_CACHE[cache_key] = {**result, "_at": now}
+        return result
+    except HTTPException:
+        raise
+    except Exception as e:
+        logger.exception("x-video fetch failed")
+        raise HTTPException(status_code=500, detail=str(e)) from e
 
 
 app.include_router(api_router)
