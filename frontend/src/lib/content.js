@@ -29,20 +29,20 @@ export const PROJECTS = [
     tag: "Long-form · UI Animation",
     type: "direct",
     href: "/Interface in Motion.mp4",
-    poster: "/Interface in Motion.mp4",
+    poster: "/interface.png",
   },
   {
     title: "Set in Motion",
     tag: "Long-form · Motion Graphics",
     type: "direct",
     href: "/Motion Graphics.mp4",
-    poster: "/Motion Graphics.mp4",
+    poster: "/motion.jpg",
   },
   {
     title: "First Frames",
     tag: "Long-form · Intro",
     type: "direct",
     href: "/Intro.mp4",
-    poster: "/Intro.mp4",
+    poster: "/intro.jpg",
   },
 ];
