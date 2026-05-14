@@ -50,7 +50,6 @@ export default function Contact() {
 
   return (
     <main className="relative pt-32 md:pt-44 pb-24 min-h-screen" data-testid="contact-page">
-      <div className="hero-glow" />
       <div className="max-w-7xl mx-auto px-5 sm:px-6 md:px-12 relative">
         <motion.div
           initial={{ opacity: 0, y: 20 }}

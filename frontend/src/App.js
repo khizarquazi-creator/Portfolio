@@ -10,6 +10,7 @@ import { useLenis } from "@/lib/lenis";
 import { Navbar } from "@/components/Navbar";
 import { NoiseBackground } from "@/components/NoiseBackground";
 import { CustomCursor } from "@/components/CustomCursor";
+import { AmbientGlow } from "@/components/AmbientGlow";
 
 const PageWrap = ({ children }) => (
   <motion.div
@@ -43,6 +44,7 @@ const Inner = () => {
   const { theme } = useTheme();
   return (
     <div className="App" data-testid="app-root" data-theme={theme}>
+      <AmbientGlow />
       <NoiseBackground />
       <CustomCursor />
       <Navbar />

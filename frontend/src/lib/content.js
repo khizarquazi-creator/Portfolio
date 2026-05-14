@@ -48,9 +48,9 @@ export const PROJECTS = [
     title: "First Frames",
     tag: "Long-form · Intro",
     type: "twitter",
-    id: "2024081290094334080",
+    id: "2008520712454373436",
     user: "HakimYousuf",
-    href: "https://x.com/HakimYousuf/status/2024081290094334080",
+    href: "https://x.com/i/status/2008520712454373436",
     poster:
       "https://images.pexels.com/photos/8770513/pexels-photo-8770513.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
   },
