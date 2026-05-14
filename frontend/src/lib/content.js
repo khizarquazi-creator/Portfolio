@@ -28,24 +28,21 @@ export const PROJECTS = [
     title: "Interface in Motion",
     tag: "Long-form · UI Animation",
     type: "direct",
-    href: "https://f.io/7N_R7b3I",
-    poster:
-      "https://images.pexels.com/photos/13812458/pexels-photo-13812458.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+    href: "/Interface in Motion.mp4",
+    poster: "/Interface in Motion.mp4",
   },
   {
     title: "Set in Motion",
     tag: "Long-form · Motion Graphics",
     type: "direct",
-    href: "https://f.io/w4408qSw",
-    poster:
-      "https://images.pexels.com/photos/36444147/pexels-photo-36444147.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+    href: "/Motion Graphics.mp4",
+    poster: "/Motion Graphics.mp4",
   },
   {
     title: "First Frames",
     tag: "Long-form · Intro",
     type: "direct",
-    href: "https://f.io/90UimEjp",
-    poster:
-      "https://images.pexels.com/photos/8770513/pexels-photo-8770513.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+    href: "/Intro.mp4",
+    poster: "/Intro.mp4",
   },
 ];
