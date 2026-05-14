@@ -19,7 +19,7 @@ export const About = () => {
           <div className="md:col-span-7 md:col-start-6 space-y-8 text-[17px] md:text-[18px] leading-[1.7]">
             <Reveal delay={0.1}>
               <p>
-                I'm Yousuf — a freelance video editor and motion designer working
+                I'm Khizar Quazi — a freelance video editor and motion designer working
                 primarily in long-form. My focus is the unglamorous part of the
                 craft: pacing, breathing room, sound design, the cut you don't
                 notice because it just feels right.

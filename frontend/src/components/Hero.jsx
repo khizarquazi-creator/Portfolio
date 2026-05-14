@@ -22,14 +22,14 @@ export const Hero = ({ onContact }) => {
             className="inline-block w-1.5 h-1.5 rounded-full"
             style={{ background: "var(--accent)" }}
           />
-          <span className="eyebrow">Freelance Video Editor / Motion Designer</span>
+          <span className="eyebrow">Freelance video editor and motion designer</span>
         </motion.div>
 
         <h1
           className="display uppercase text-[38px] sm:text-[64px] md:text-[88px] lg:text-[104px] xl:text-[112px] leading-[0.86] tracking-[-0.05em] max-w-[12ch]"
           data-testid="hero-headline"
         >
-          {"Turning raw clips into".split(" ").map((w, i) => (
+          {"Creating high-retention edits for".split(" ").map((w, i) => (
             <motion.span
               key={i}
               initial={{ opacity: 0, y: 60 }}
@@ -48,7 +48,7 @@ export const Hero = ({ onContact }) => {
             className="inline-block"
             style={{ color: "var(--accent)" }}
           >
-            mini masterpieces.
+            brands, creators & trading businesses.
           </motion.span>
         </h1>
 
