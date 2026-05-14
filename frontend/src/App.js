@@ -1,53 +1,66 @@
 import { useEffect } from "react";
 import "@/App.css";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-import axios from "axios";
+import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
+import { AnimatePresence, motion } from "framer-motion";
+import { Toaster } from "sonner";
+import Home from "@/pages/Home";
+import Contact from "@/pages/Contact";
+import { ThemeProvider, useTheme } from "@/lib/theme";
+import { useLenis } from "@/lib/lenis";
+import { Navbar } from "@/components/Navbar";
+import { NoiseBackground } from "@/components/NoiseBackground";
 
-const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
-const API = `${BACKEND_URL}/api`;
+const PageWrap = ({ children }) => (
+  <motion.div
+    initial={{ opacity: 0, y: 16 }}
+    animate={{ opacity: 1, y: 0 }}
+    exit={{ opacity: 0, y: -16 }}
+    transition={{ duration: 0.45, ease: [0.22, 0.85, 0.3, 1] }}
+  >
+    {children}
+  </motion.div>
+);
 
-const Home = () => {
-  const helloWorldApi = async () => {
-    try {
-      const response = await axios.get(`${API}/`);
-      console.log(response.data.message);
-    } catch (e) {
-      console.error(e, `errored out requesting / api`);
-    }
-  };
-
+const AnimatedRoutes = () => {
+  const location = useLocation();
   useEffect(() => {
-    helloWorldApi();
-  }, []);
+    window.scrollTo({ top: 0, behavior: "instant" });
+  }, [location.pathname]);
 
   return (
-    <div>
-      <header className="App-header">
-        <a
-          className="App-link"
-          href="https://emergent.sh"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <img src="https://avatars.githubusercontent.com/in/1201222?s=120&u=2686cf91179bbafbc7a71bfbc43004cf9ae1acea&v=4" />
-        </a>
-        <p className="mt-5">Building something incredible ~!</p>
-      </header>
+    <AnimatePresence mode="wait">
+      <Routes location={location} key={location.pathname}>
+        <Route path="/" element={<PageWrap><Home /></PageWrap>} />
+        <Route path="/contact" element={<PageWrap><Contact /></PageWrap>} />
+      </Routes>
+    </AnimatePresence>
+  );
+};
+
+const Inner = () => {
+  useLenis();
+  const { theme } = useTheme();
+  return (
+    <div className="App" data-testid="app-root" data-theme={theme}>
+      <NoiseBackground />
+      <Navbar />
+      <AnimatedRoutes />
+      <Toaster
+        position="bottom-right"
+        theme={theme === "dark" ? "dark" : "light"}
+        toastOptions={{ style: { fontFamily: "Manrope, sans-serif" } }}
+      />
     </div>
   );
 };
 
 function App() {
   return (
-    <div className="App">
+    <ThemeProvider defaultTheme="dark">
       <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<Home />}>
-            <Route index element={<Home />} />
-          </Route>
-        </Routes>
+        <Inner />
       </BrowserRouter>
-    </div>
+    </ThemeProvider>
   );
 }
 
