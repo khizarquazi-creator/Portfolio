@@ -1,0 +1,160 @@
+{
+  "project_name": "Yousuf Hakim Portfolio",
+  "theme_and_archetype": {
+    "domain": "Portfolio / Video Editing",
+    "theme": "Dark Theme (Default) with Light Toggle",
+    "archetype": "Archetype 4 (Swiss & High-Contrast) mixed with Archetype 5 (Cinematic Luxury)",
+    "vibe": "Premium, trustworthy, calm, minimal, cinematic. No visual clutter."
+  },
+  "colors": {
+    "dark": {
+      "background": "#070707",
+      "surface": "#121212",
+      "text_primary": "#FFFFFF",
+      "text_secondary": "#A0A0A0",
+      "accent_primary": "#9FE870",
+      "accent_secondary": "#163300",
+      "border": "rgba(255, 255, 255, 0.1)"
+    },
+    "light": {
+      "background": "#F8F9FA",
+      "surface": "#FFFFFF",
+      "text_primary": "#0A0A0A",
+      "text_secondary": "#555555",
+      "accent_primary": "#163300",
+      "accent_secondary": "#9FE870",
+      "border": "rgba(0, 0, 0, 0.1)"
+    }
+  },
+  "typography": {
+    "fonts": {
+      "headings": "'Satoshi', 'Outfit', sans-serif",
+      "body": "'Manrope', sans-serif",
+      "mono": "'JetBrains Mono', monospace"
+    },
+    "rules": {
+      "h1": "text-5xl sm:text-6xl tracking-tighter leading-none font-medium",
+      "h2": "text-3xl sm:text-4xl md:text-5xl tracking-tight leading-tight font-medium",
+      "h3": "text-xl sm:text-2xl tracking-tight leading-snug font-medium",
+      "body": "text-base leading-relaxed tracking-normal",
+      "overline": "text-xs uppercase tracking-[0.2em] font-medium text-secondary"
+    },
+    "instructions": "DO NOT use Inter or generic sans for headings. Use 'Satoshi' (or Outfit as fallback). Wise-inspired functional hierarchy: large headings, wide spacing, strong readability. Only left-align or occasionally center-align specific blocks."
+  },
+  "layout_and_spacing": {
+    "spacing_system": "Generous spacing. Follow a 4px foundational scale (e.g. 8px, 16px, 24px, 32px, 64px, 128px) inspired by Wise Design.",
+    "section_padding": "py-24 md:py-32",
+    "container": "max-w-7xl mx-auto px-6 md:px-12",
+    "grid": "Bento-style grids for Process and Portfolio. Gap-6 or Gap-8 for breathing room.",
+    "surfaces": "Minimal. 1px subtle borders (rgba(255,255,255,0.1) in dark mode). Soft diffuse shadows. No heavy gradients."
+  },
+  "motion_and_interactions": {
+    "scroll": "Lenis smooth scrolling is MANDATORY. Implement in layout.",
+    "hover": "Magnetic hover effect on primary buttons. Image/Video posters slightly scale up (1.02) on hover with an extended duration (0.6s ease).",
+    "reveal": "Subtle fade-up and slide-up reveals on scroll using Framer Motion.",
+    "theme_toggle": "Smooth crossfade on theme toggle. Use Framer Motion for the toggle icon.",
+    "cursor": "Optional: very subtle custom cursor dot that inverts color against background, or just default clean cursor. Do not over-engineer."
+  },
+  "components": {
+    "shadcn_components_needed": ["accordion", "button", "input", "textarea", "form", "dialog"],
+    "custom_components": [
+      {
+        "name": "MagneticButton",
+        "description": "A button that slightly pulls towards the cursor on hover using framer-motion."
+      },
+      {
+        "name": "VideoPortfolioCard",
+        "description": "Hover to play preview. Dark sleek border. Hidden captions that slide up."
+      },
+      {
+        "name": "ThemeToggle",
+        "description": "Wise-inspired toggle in the navbar."
+      },
+      {
+        "name": "NoiseBackground",
+        "description": "A fixed SVG noise/grain overlay for the cinematic feel."
+      }
+    ]
+  },
+  "pages_and_sections": [
+    {
+      "name": "Home",
+      "sections": [
+        {
+          "id": "hero",
+          "description": "Massive clean typography: 'Turning raw clips into mini masterpieces.' Sticky 'Let's Talk' CTA. Smooth scroll indicator. Subtle animated CSS grain background.",
+          "instructions": "Do not use a video background. Use a pure dark background with an SVG noise overlay and a very soft radial gradient (accent color #163300 at 10% opacity) in the center/top."
+        },
+        {
+          "id": "about",
+          "description": "Minimal paragraph design. Short intro, craftsmanship philosophy. Left-aligned, max-width prose."
+        },
+        {
+          "id": "portfolio",
+          "description": "Grid layout. Cinematic spacing. Cards have video poster images. On hover, they simulate a video playing or show a 'Play' icon. Minimal captions."
+        },
+        {
+          "id": "process",
+          "description": "3-step timeline or sleek cards: 1. Strategy, 2. Edit & Motion, 3. Final Polish. Use large typography numbers (01, 02, 03)."
+        },
+        {
+          "id": "pricing",
+          "description": "One minimal card/section for 'Custom Pricing - Tailored to every project'. Minimal CTA."
+        },
+        {
+          "id": "faq",
+          "description": "Expandable Shadcn accordion. Clean motion, minimal UI. 1px borders."
+        }
+      ]
+    },
+    {
+      "name": "Contact",
+      "sections": [
+        {
+          "id": "contact-form",
+          "description": "Premium minimalist form (Shadcn Form/Input). Options for Email, WhatsApp, Discord, IG. Large headings."
+        }
+      ]
+    }
+  ],
+  "image_urls": [
+    {
+      "category": "portfolio_placeholder_1",
+      "url": "https://images.pexels.com/photos/13812458/pexels-photo-13812458.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+      "description": "Cinematic cameraman in candlelight."
+    },
+    {
+      "category": "portfolio_placeholder_2",
+      "url": "https://images.pexels.com/photos/36444147/pexels-photo-36444147.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+      "description": "Moody deep thought lighting."
+    },
+    {
+      "category": "portfolio_placeholder_3",
+      "url": "https://images.pexels.com/photos/11063289/pexels-photo-11063289.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+      "description": "Professional video editing studio."
+    },
+    {
+      "category": "portfolio_placeholder_4",
+      "url": "https://images.pexels.com/photos/8770513/pexels-photo-8770513.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+      "description": "Editing footage on dual monitors."
+    }
+  ],
+  "instructions_to_main_agent": [
+    "Strictly adhere to the dark theme as default. Ensure smooth toggling to light theme.",
+    "Use standard HTML tags and Tailwind classes for complex overlapping marketing layouts instead of Shadcn Cards.",
+    "Create an SVG noise overlay (base64 or direct SVG in React) for the Hero background to avoid flat colors, making it cinematic.",
+    "Implement Lenis smooth scrolling in the main layout.",
+    "Never use Inter for headings. Use 'Satoshi' or 'Cabinet Grotesk' via font-face or next/font (or standard google fonts like Outfit/Manrope).",
+    "Ensure the accent colors #163300 and #9FE870 are used elegantly. For instance, in dark mode, a button background of #9FE870 with text #163300 provides high contrast and a premium look.",
+    "DO NOT add fake metrics or fake client logos. Keep it minimalist.",
+    "Create separate /contact page, utilizing framer-motion for smooth routing transitions."
+  ],
+  "testing_attributes": {
+    "rule": "All interactive elements MUST have role-based kebab-case data-testid attributes.",
+    "examples": [
+      "data-testid='hero-cta-button'",
+      "data-testid='theme-toggle-button'",
+      "data-testid='contact-submit-button'"
+    ]
+  }
+}
