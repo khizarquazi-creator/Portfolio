@@ -17,6 +17,25 @@ const YouTubeEmbed = ({ id }) => (
   </div>
 );
 
+const DirectVideoPlayer = ({ href, poster }) => (
+  <video
+    controls
+    autoPlay
+    muted
+    playsInline
+    preload="metadata"
+    src={href}
+    poster={poster}
+    style={{
+      width: "100%",
+      height: "auto",
+      maxHeight: "78vh",
+      display: "block",
+      background: "#000",
+    }}
+  />
+);
+
 const XVideoPlayer = ({ user, id, poster }) => {
   const { data, error } = useXVideo(user, id);
   if (error) {
@@ -186,6 +205,8 @@ const VideoModal = ({ project, onClose }) => {
             >
               {project.type === "youtube" ? (
                 <YouTubeEmbed id={project.id} />
+              ) : project.type === "direct" ? (
+                <DirectVideoPlayer href={project.href} poster={project.poster} />
               ) : (
                 <XVideoPlayer user={project.user} id={project.id} poster={project.poster} />
               )}
