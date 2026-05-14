@@ -30,7 +30,7 @@ export const PROJECTS = [
     type: "twitter",
     id: "2054182659090509887",
     user: "HakimYousuf",
-    href: "https://x.com/HakimYousuf/status/2054182659090509887",
+    href: "https://f.io/7N_R7b3I",
     poster:
       "https://images.pexels.com/photos/13812458/pexels-photo-13812458.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
   },
@@ -40,7 +40,7 @@ export const PROJECTS = [
     type: "twitter",
     id: "2049532167114625454",
     user: "HakimYousuf",
-    href: "https://x.com/HakimYousuf/status/2049532167114625454",
+    href: "https://f.io/w4408qSw",
     poster:
       "https://images.pexels.com/photos/36444147/pexels-photo-36444147.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
   },
@@ -50,7 +50,7 @@ export const PROJECTS = [
     type: "twitter",
     id: "2008520712454373436",
     user: "HakimYousuf",
-    href: "https://x.com/i/status/2008520712454373436",
+    href: "https://f.io/90UimEjp",
     poster:
       "https://images.pexels.com/photos/8770513/pexels-photo-8770513.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
   },
