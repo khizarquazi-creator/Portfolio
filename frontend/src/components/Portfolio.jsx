@@ -1,20 +1,20 @@
-import { useRef, useState } from "react";
-import { motion } from "framer-motion";
-import { ArrowUpRight, Play } from "lucide-react";
+import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { ArrowUpRight, Play, X } from "lucide-react";
 import { Reveal } from "./Reveal";
 import { PROJECTS } from "../lib/content";
+import { YouTubeEmbed, TwitterEmbed } from "./VideoEmbed";
 
-const Card = ({ p, index }) => {
+const Card = ({ p, index, onOpen }) => {
   const [hover, setHover] = useState(false);
   return (
     <Reveal delay={index * 0.06}>
-      <motion.a
-        href={p.href}
-        target="_blank"
-        rel="noopener noreferrer"
+      <motion.button
+        type="button"
+        onClick={() => onOpen(p)}
         onMouseEnter={() => setHover(true)}
         onMouseLeave={() => setHover(false)}
-        className="portfolio-card group block no-hover-color"
+        className="portfolio-card group block w-full text-left no-hover-color"
         data-testid={`portfolio-card-${index}`}
         whileHover={{ y: -4 }}
         transition={{ duration: 0.4, ease: [0.22, 0.85, 0.3, 1] }}
@@ -46,19 +46,104 @@ const Card = ({ p, index }) => {
               {p.title}
             </h3>
           </div>
-          <div
-            className="w-10 h-10 rounded-full flex items-center justify-center shrink-0"
+          <motion.div
+            className="w-11 h-11 rounded-full flex items-center justify-center shrink-0"
             style={{ background: "var(--accent)", color: "var(--accent-on)" }}
+            animate={{ scale: hover ? 1.08 : 1 }}
+            transition={{ duration: 0.3 }}
           >
-            {hover ? <ArrowUpRight size={16} /> : <Play size={14} fill="currentColor" />}
-          </div>
+            <Play size={15} fill="currentColor" />
+          </motion.div>
         </motion.div>
-      </motion.a>
+      </motion.button>
     </Reveal>
   );
 };
 
+const VideoModal = ({ project, onClose }) => {
+  return (
+    <AnimatePresence>
+      {project && (
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 0.3 }}
+          className="fixed inset-0 z-[100] flex items-center justify-center p-4 md:p-10"
+          style={{ background: "rgba(0,0,0,0.85)", backdropFilter: "blur(12px)" }}
+          onClick={onClose}
+          data-testid="video-modal"
+        >
+          <motion.div
+            initial={{ scale: 0.96, y: 16, opacity: 0 }}
+            animate={{ scale: 1, y: 0, opacity: 1 }}
+            exit={{ scale: 0.96, y: 16, opacity: 0 }}
+            transition={{ duration: 0.35, ease: [0.22, 0.85, 0.3, 1] }}
+            className="relative w-full max-w-5xl"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <div className="flex items-end justify-between mb-4">
+              <div>
+                <p className="eyebrow" style={{ fontSize: 10, color: "rgba(255,255,255,0.6)" }}>
+                  {project.tag}
+                </p>
+                <h3
+                  className="text-white text-2xl md:text-3xl tracking-tight mt-1"
+                  style={{ fontFamily: '"Bricolage Grotesque", sans-serif', fontWeight: 700 }}
+                >
+                  {project.title}
+                </h3>
+              </div>
+              <button
+                onClick={onClose}
+                aria-label="Close"
+                data-testid="video-modal-close"
+                className="w-10 h-10 rounded-full flex items-center justify-center shrink-0 transition-colors"
+                style={{ border: "1px solid rgba(255,255,255,0.2)", color: "#fff" }}
+              >
+                <X size={16} />
+              </button>
+            </div>
+
+            <div
+              className="rounded-2xl overflow-hidden"
+              style={{ background: "#0a0a0a", border: "1px solid rgba(255,255,255,0.08)" }}
+            >
+              <div className="p-4 md:p-6">
+                {project.type === "youtube" ? (
+                  <YouTubeEmbed id={project.id} />
+                ) : (
+                  <TwitterEmbed id={project.id} user={project.user} />
+                )}
+              </div>
+            </div>
+
+            <div className="mt-4 flex items-center justify-end">
+              <a
+                href={project.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="eyebrow inline-flex items-center gap-2"
+                style={{ fontSize: 10, color: "rgba(255,255,255,0.7)" }}
+              >
+                Open original <ArrowUpRight size={12} />
+              </a>
+            </div>
+          </motion.div>
+        </motion.div>
+      )}
+    </AnimatePresence>
+  );
+};
+
 export const Portfolio = () => {
+  const [active, setActive] = useState(null);
+
+  // Lock body scroll while modal open
+  if (typeof window !== "undefined") {
+    document.documentElement.style.overflow = active ? "hidden" : "";
+  }
+
   return (
     <section
       id="portfolio"
@@ -70,7 +155,7 @@ export const Portfolio = () => {
           <Reveal>
             <p className="eyebrow mb-5">02 — Hall of Fame</p>
             <h2 className="display text-3xl sm:text-4xl md:text-5xl lg:text-6xl tracking-tight leading-[0.95] max-w-[16ch]">
-              Selected work. Click to watch.
+              Selected work. Click to play.
             </h2>
           </Reveal>
           <Reveal delay={0.1}>
@@ -82,10 +167,12 @@ export const Portfolio = () => {
 
         <div className="grid sm:grid-cols-2 gap-5 md:gap-6">
           {PROJECTS.map((p, i) => (
-            <Card key={p.title} p={p} index={i} />
+            <Card key={p.title} p={p} index={i} onOpen={setActive} />
           ))}
         </div>
       </div>
+
+      <VideoModal project={active} onClose={() => setActive(null)} />
     </section>
   );
 };

@@ -12,32 +12,46 @@ export const SOCIALS = {
   xHref: "https://x.com/HakimYousuf",
 };
 
+// type: "youtube" | "twitter"
+// For youtube: id = YouTube video id
+// For twitter: id = tweet status id, user = handle (without @)
 export const PROJECTS = [
   {
     title: "The Long Cut",
-    tag: "YouTube · Long-form",
-    poster: "https://img.youtube.com/vi/-YZ2UBhwQM4/maxresdefault.jpg",
+    tag: "Long-form · YouTube",
+    type: "youtube",
+    id: "-YZ2UBhwQM4",
     href: "https://youtu.be/-YZ2UBhwQM4",
+    poster: "https://img.youtube.com/vi/-YZ2UBhwQM4/maxresdefault.jpg",
   },
   {
-    title: "Frame One",
-    tag: "Short-form · Edit",
+    title: "Interface in Motion",
+    tag: "Long-form · UI Animation",
+    type: "twitter",
+    id: "2054182659090509887",
+    user: "HakimYousuf",
+    href: "https://x.com/HakimYousuf/status/2054182659090509887",
     poster:
       "https://images.pexels.com/photos/13812458/pexels-photo-13812458.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
-    href: "https://x.com/HakimYousuf/status/2054182659090509887?s=20",
   },
   {
-    title: "Tempo",
-    tag: "Short-form · Motion",
+    title: "Set in Motion",
+    tag: "Long-form · Motion Graphics",
+    type: "twitter",
+    id: "2049532167114625454",
+    user: "HakimYousuf",
+    href: "https://x.com/HakimYousuf/status/2049532167114625454",
     poster:
       "https://images.pexels.com/photos/36444147/pexels-photo-36444147.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
-    href: "https://x.com/HakimYousuf/status/2049532167114625454?s=20",
   },
   {
-    title: "Studio Notes",
-    tag: "Short-form · Showcase",
+    title: "First Frames",
+    tag: "Long-form · Intro",
+    type: "twitter",
+    id: "2024081290094334080",
+    user: "HakimYousuf",
+    href: "https://x.com/HakimYousuf/status/2024081290094334080",
     poster:
       "https://images.pexels.com/photos/8770513/pexels-photo-8770513.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
-    href: "https://x.com/HakimYousuf/status/2024081290094334080?s=20",
   },
 ];
