@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { ArrowUpRight, Mail, Instagram, Send, Twitter } from "lucide-react";
-import axios from "axios";
 import { toast } from "sonner";
 import { MagneticButton } from "../components/MagneticButton";
 import { Reveal } from "../components/Reveal";
@@ -14,8 +13,7 @@ import {
   SelectValue,
 } from "../components/ui/select";
 
-const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
-const API = `${BACKEND_URL}/api`;
+const WEB3FORMS_KEY = process.env.REACT_APP_WEB3FORMS_KEY;
 
 const channels = [
   { icon: Mail, label: "Email", value: SOCIALS.email, href: SOCIALS.emailHref, testId: "contact-channel-email" },
@@ -52,13 +50,45 @@ export default function Contact() {
     if (loading) return;
     setLoading(true);
     try {
-      await axios.post(`${API}/contact`, form);
-      setSent(true);
-      toast.success("Message received. I'll reply within 48 hours.");
-      setForm({ name: "", email: "", project_type: "Long-form video editing", budget: "", message: "" });
+      if (WEB3FORMS_KEY) {
+        const payload = {
+          access_key: WEB3FORMS_KEY,
+          subject: `New project enquiry — ${form.name}`,
+          from_name: form.name,
+          reply_to: form.email,
+          email: form.email,
+          name: form.name,
+          project_type: form.project_type,
+          budget: form.budget || "—",
+          message: form.message,
+        };
+        const res = await fetch("https://api.web3forms.com/submit", {
+          method: "POST",
+          headers: { "Content-Type": "application/json", Accept: "application/json" },
+          body: JSON.stringify(payload),
+        });
+        const json = await res.json();
+        if (!res.ok || !json.success) throw new Error(json?.message || "Web3Forms error");
+        setSent(true);
+        toast.success("Message received. I'll reply within 48 hours.");
+        setForm({ name: "", email: "", project_type: "Long-form video editing", budget: "", message: "" });
+      } else {
+        // Fallback when no Web3Forms key is configured: open mailto
+        const body =
+          `Name: ${form.name}\n` +
+          `Email: ${form.email}\n` +
+          `Project type: ${form.project_type}\n` +
+          `Budget: ${form.budget || "—"}\n\n` +
+          `${form.message}`;
+        const mail =
+          `mailto:${SOCIALS.email}` +
+          `?subject=${encodeURIComponent(`New project enquiry — ${form.name}`)}` +
+          `&body=${encodeURIComponent(body)}`;
+        window.location.href = mail;
+        toast.success("Opening your mail app…");
+      }
     } catch (err) {
-      const msg = err?.response?.data?.detail || "Something went wrong. Try again.";
-      toast.error(typeof msg === "string" ? msg : "Failed to send");
+      toast.error(err?.message || "Something went wrong. Try again.");
     } finally {
       setLoading(false);
     }
@@ -189,13 +219,11 @@ export default function Contact() {
                 font-size: 16px !important;
                 box-shadow: none !important;
               }
-              .form-select:focus {
+              .form-select:focus,
+              .form-select[data-state="open"] {
                 border-bottom-color: var(--accent) !important;
                 outline: none !important;
                 box-shadow: none !important;
-              }
-              .form-select[data-state="open"] {
-                border-bottom-color: var(--accent) !important;
               }
             `}</style>
           </div>

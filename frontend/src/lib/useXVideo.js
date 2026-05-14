@@ -1,8 +1,4 @@
 import { useEffect, useState } from "react";
-import axios from "axios";
-
-const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
-const API = `${BACKEND_URL}/api`;
 
 const cache = new Map();
 
@@ -18,12 +14,26 @@ export const useXVideo = (user, id) => {
       return;
     }
     let cancelled = false;
-    axios
-      .get(`${API}/x-video/${user}/${id}`)
-      .then((res) => {
+    fetch(`https://api.fxtwitter.com/${user}/status/${id}`)
+      .then((r) => {
+        if (!r.ok) throw new Error(`fxtwitter ${r.status}`);
+        return r.json();
+      })
+      .then((json) => {
         if (cancelled) return;
-        cache.set(key, res.data);
-        setData(res.data);
+        const tweet = json?.tweet || {};
+        const videos = tweet?.media?.videos || [];
+        if (!videos.length) throw new Error("Tweet has no video");
+        const v = videos[0];
+        const result = {
+          mp4: v.url,
+          thumbnail: v.thumbnail_url,
+          width: v.width,
+          height: v.height,
+          author: tweet?.author?.screen_name || user,
+        };
+        cache.set(key, result);
+        setData(result);
       })
       .catch((e) => !cancelled && setError(e));
     return () => {
