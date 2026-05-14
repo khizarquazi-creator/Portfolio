@@ -41,9 +41,6 @@ export const Footer = ({ onContact }) => {
               <a href={SOCIALS.xHref} target="_blank" rel="noreferrer" className="block transition-colors mt-2" data-testid="footer-x">
                 X / Twitter
               </a>
-              <a href={SOCIALS.discordHref} target="_blank" rel="noreferrer" className="block transition-colors mt-2" data-testid="footer-discord">
-                Discord
-              </a>
             </div>
           </div>
         </div>

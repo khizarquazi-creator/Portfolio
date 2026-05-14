@@ -1,11 +1,18 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { ArrowUpRight, Mail, MessageCircle, Instagram, Send, Twitter } from "lucide-react";
+import { ArrowUpRight, Mail, Instagram, Send, Twitter } from "lucide-react";
 import axios from "axios";
 import { toast } from "sonner";
 import { MagneticButton } from "../components/MagneticButton";
 import { Reveal } from "../components/Reveal";
 import { SOCIALS } from "../lib/content";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "../components/ui/select";
 
 const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
 const API = `${BACKEND_URL}/api`;
@@ -15,7 +22,16 @@ const channels = [
   { icon: Send, label: "WhatsApp", value: SOCIALS.whatsapp, href: SOCIALS.whatsappHref, testId: "contact-channel-whatsapp" },
   { icon: Twitter, label: "X / Twitter", value: SOCIALS.x, href: SOCIALS.xHref, testId: "contact-channel-x" },
   { icon: Instagram, label: "Instagram", value: SOCIALS.instagram, href: SOCIALS.instagramHref, testId: "contact-channel-instagram" },
-  { icon: MessageCircle, label: "Discord", value: SOCIALS.discord, href: SOCIALS.discordHref, testId: "contact-channel-discord" },
+];
+
+const PROJECT_TYPES = [
+  "Long-form video editing",
+  "YouTube long-form",
+  "Podcast edit",
+  "Documentary",
+  "Brand film",
+  "Course content",
+  "Other",
 ];
 
 export default function Contact() {
@@ -94,13 +110,24 @@ export default function Contact() {
               </Field>
               <div className="grid sm:grid-cols-2 gap-7">
                 <Field label="Project type">
-                  <input
+                  <Select
                     value={form.project_type}
-                    onChange={update("project_type")}
-                    data-testid="contact-input-project-type"
-                    placeholder="Long-form video editing"
-                    className="form-input"
-                  />
+                    onValueChange={(v) => setForm((f) => ({ ...f, project_type: v }))}
+                  >
+                    <SelectTrigger
+                      data-testid="contact-input-project-type"
+                      className="form-select"
+                    >
+                      <SelectValue placeholder="Choose a type" />
+                    </SelectTrigger>
+                    <SelectContent>
+                      {PROJECT_TYPES.map((t) => (
+                        <SelectItem key={t} value={t} data-testid={`project-type-${t.toLowerCase().replace(/\s+/g, "-")}`}>
+                          {t}
+                        </SelectItem>
+                      ))}
+                    </SelectContent>
+                  </Select>
                 </Field>
                 <Field label="Budget (optional)">
                   <input
@@ -151,6 +178,25 @@ export default function Contact() {
               }
               .form-input::placeholder { color: var(--text-secondary); opacity: 0.6; }
               .form-input:focus { border-bottom-color: var(--accent); }
+              .form-select {
+                background: transparent !important;
+                color: var(--text-primary) !important;
+                border: 0 !important;
+                border-bottom: 1px solid var(--border-strong) !important;
+                border-radius: 0 !important;
+                padding: 12px 0 !important;
+                height: auto !important;
+                font-size: 16px !important;
+                box-shadow: none !important;
+              }
+              .form-select:focus {
+                border-bottom-color: var(--accent) !important;
+                outline: none !important;
+                box-shadow: none !important;
+              }
+              .form-select[data-state="open"] {
+                border-bottom-color: var(--accent) !important;
+              }
             `}</style>
           </div>
 
@@ -163,7 +209,7 @@ export default function Contact() {
                     href={href}
                     target={href.startsWith("http") ? "_blank" : undefined}
                     rel="noreferrer"
-                    className="flex items-center gap-4 p-4 transition-colors"
+                    className="flex items-center gap-4 p-4 transition-colors no-hover-color"
                     style={{ border: "1px solid var(--border)", borderRadius: 12 }}
                     data-testid={testId}
                   >
@@ -173,11 +219,11 @@ export default function Contact() {
                     >
                       <Icon size={16} />
                     </span>
-                    <span className="flex-1">
+                    <span className="flex-1 min-w-0">
                       <span className="block eyebrow" style={{ fontSize: 10 }}>{label}</span>
-                      <span className="block text-[14px] mt-0.5">{value}</span>
+                      <span className="block text-[13px] mt-0.5 break-all">{value}</span>
                     </span>
-                    <ArrowUpRight size={16} className="muted" />
+                    <ArrowUpRight size={16} className="muted shrink-0" />
                   </a>
                 </li>
               ))}

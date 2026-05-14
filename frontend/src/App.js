@@ -44,7 +44,7 @@ const Inner = () => {
   const { theme } = useTheme();
   return (
     <div className="App" data-testid="app-root" data-theme={theme}>
-      <AmbientGlow />
+      {theme === "dark" && <AmbientGlow />}
       <NoiseBackground />
       <CustomCursor />
       <Navbar />
