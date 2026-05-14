@@ -21,7 +21,7 @@ export const Pricing = ({ onContact }) => {
       <div className="max-w-7xl mx-auto px-5 sm:px-6 md:px-12">
         <div className="grid md:grid-cols-12 gap-10 items-start">
           <Reveal className="md:col-span-5">
-            <p className="overline mb-5">04 — Pricing</p>
+            <p className="eyebrow mb-5">04 — Pricing</p>
             <h2 className="display text-3xl sm:text-4xl md:text-5xl lg:text-6xl tracking-tight leading-[0.95]">
               One plan. Shaped to your project.
             </h2>
@@ -50,7 +50,7 @@ export const Pricing = ({ onContact }) => {
                 }}
               />
               <div className="flex items-center justify-between">
-                <span className="overline">Custom Plan</span>
+                <span className="eyebrow">Custom Plan</span>
                 <span
                   className="px-3 py-1 rounded-full text-[11px] tracking-[0.2em] uppercase"
                   style={{

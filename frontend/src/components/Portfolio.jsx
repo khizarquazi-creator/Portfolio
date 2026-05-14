@@ -91,7 +91,7 @@ const Card = ({ p, index }) => {
         />
         <div className="absolute left-5 bottom-5 right-5 flex items-end justify-between">
           <div>
-            <p className="overline text-white/70" style={{ color: "rgba(255,255,255,0.7)" }}>
+            <p className="eyebrow text-white/70" style={{ color: "rgba(255,255,255,0.7)" }}>
               {p.tag}
             </p>
             <h3 className="text-white text-xl md:text-2xl mt-1 tracking-tight">
@@ -120,7 +120,7 @@ export const Portfolio = () => {
       <div className="max-w-7xl mx-auto px-5 sm:px-6 md:px-12">
         <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-6 mb-12 md:mb-20">
           <Reveal>
-            <p className="overline mb-5">02 — Hall of Fame</p>
+            <p className="eyebrow mb-5">02 — Hall of Fame</p>
             <h2 className="display text-3xl sm:text-4xl md:text-5xl lg:text-6xl tracking-tight leading-[0.95] max-w-[16ch]">
               Selected work. Hover to preview.
             </h2>

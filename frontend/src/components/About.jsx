@@ -10,7 +10,7 @@ export const About = () => {
       <div className="max-w-7xl mx-auto px-5 sm:px-6 md:px-12">
         <div className="grid md:grid-cols-12 gap-10 md:gap-16">
           <Reveal className="md:col-span-4">
-            <p className="overline mb-6">01 — About</p>
+            <p className="eyebrow mb-6">01 — About</p>
             <h2 className="display text-3xl md:text-4xl lg:text-5xl tracking-tight leading-[1.0]">
               A quiet craft, sharpened over thousands of timeline hours.
             </h2>
@@ -34,7 +34,7 @@ export const About = () => {
               </p>
             </Reveal>
             <Reveal delay={0.3}>
-              <div className="flex flex-wrap gap-x-10 gap-y-4 pt-4 overline">
+              <div className="flex flex-wrap gap-x-10 gap-y-4 pt-4 eyebrow">
                 <span>Long-form editing</span>
                 <span style={{ opacity: 0.4 }}>•</span>
                 <span>Motion design</span>

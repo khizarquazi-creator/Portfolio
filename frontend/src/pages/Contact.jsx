@@ -56,7 +56,7 @@ export default function Contact() {
           transition={{ duration: 0.7 }}
           className="max-w-3xl"
         >
-          <p className="overline mb-6">Get in touch</p>
+          <p className="eyebrow mb-6">Get in touch</p>
           <h1 className="display text-4xl sm:text-5xl md:text-7xl lg:text-8xl tracking-[-0.045em] leading-[0.9]">
             Let's make something{" "}
             <span style={{ color: "var(--accent)" }}>worth watching.</span>
@@ -154,7 +154,7 @@ export default function Contact() {
           </div>
 
           <Reveal delay={0.15} className="md:col-span-4 md:col-start-9">
-            <p className="overline mb-6">Or reach out directly</p>
+            <p className="eyebrow mb-6">Or reach out directly</p>
             <ul className="space-y-4">
               {channels.map(({ icon: Icon, label, value, href, testId }) => (
                 <li key={label}>
@@ -173,7 +173,7 @@ export default function Contact() {
                       <Icon size={16} />
                     </span>
                     <span className="flex-1">
-                      <span className="block overline" style={{ fontSize: 10 }}>{label}</span>
+                      <span className="block eyebrow" style={{ fontSize: 10 }}>{label}</span>
                       <span className="block text-[14px] mt-0.5">{value}</span>
                     </span>
                     <ArrowUpRight size={16} className="muted" />
@@ -190,7 +190,7 @@ export default function Contact() {
 
 const Field = ({ label, children }) => (
   <label className="block">
-    <span className="overline block mb-2" style={{ fontSize: 10 }}>{label}</span>
+    <span className="eyebrow block mb-2" style={{ fontSize: 10 }}>{label}</span>
     {children}
   </label>
 );

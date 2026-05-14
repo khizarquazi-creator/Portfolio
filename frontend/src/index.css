@@ -174,12 +174,13 @@ html.light .btn-magnetic:hover {
     color: var(--accent);
 }
 
-.overline {
+.eyebrow {
     font-family: "JetBrains Mono", monospace;
     font-size: 11px;
     letter-spacing: 0.24em;
     text-transform: uppercase;
     color: var(--text-secondary);
+    text-decoration: none;
 }
 
 /* Subtle hover color change on text links */

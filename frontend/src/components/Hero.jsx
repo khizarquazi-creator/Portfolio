@@ -22,7 +22,7 @@ export const Hero = ({ onContact }) => {
             className="inline-block w-1.5 h-1.5 rounded-full"
             style={{ background: "var(--accent)" }}
           />
-          <span className="overline">Freelance Video Editor / Motion Designer</span>
+          <span className="eyebrow">Freelance Video Editor / Motion Designer</span>
         </motion.div>
 
         <h1
@@ -88,12 +88,12 @@ export const Hero = ({ onContact }) => {
         className="relative max-w-7xl mx-auto px-5 sm:px-6 md:px-12 w-full pb-6 sm:pb-8 md:pb-10 flex items-center justify-between"
       >
         <div className="flex items-center gap-3 muted" data-testid="scroll-indicator">
-          <span className="overline" style={{ fontSize: 10 }}>
+          <span className="eyebrow" style={{ fontSize: 10 }}>
             Scroll
           </span>
           <ArrowDown size={14} className="scroll-nudge" />
         </div>
-        <div className="hidden md:flex items-center gap-6 overline">
+        <div className="hidden md:flex items-center gap-6 eyebrow">
           <span>Adobe Premiere Pro</span>
           <span style={{ opacity: 0.4 }}>/</span>
           <span>After Effects</span>

@@ -28,7 +28,7 @@ export const Process = () => {
     >
       <div className="max-w-7xl mx-auto px-5 sm:px-6 md:px-12">
         <Reveal>
-          <p className="overline mb-5">03 — Process</p>
+          <p className="eyebrow mb-5">03 — Process</p>
           <h2 className="display text-3xl sm:text-4xl md:text-5xl lg:text-6xl tracking-tight leading-[0.95] max-w-[18ch]">
             Three steps. No noise. No surprises.
           </h2>
