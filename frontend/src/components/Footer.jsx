@@ -25,19 +25,19 @@ export const Footer = ({ onContact }) => {
           <div className="md:col-span-4 md:col-start-9 grid grid-cols-2 gap-6 self-end text-[14px]">
             <div>
               <p className="overline mb-3" style={{ fontSize: 10 }}>Contact</p>
-              <a href="mailto:hello@yousufhakim.com" className="block hover:opacity-70 transition-opacity">
+              <a href="mailto:hello@yousufhakim.com" className="block transition-colors">
                 hello@yousufhakim.com
               </a>
-              <a href="https://wa.me/" target="_blank" rel="noreferrer" className="block hover:opacity-70 transition-opacity mt-2">
+              <a href="https://wa.me/" target="_blank" rel="noreferrer" className="block transition-colors mt-2">
                 WhatsApp
               </a>
             </div>
             <div>
               <p className="overline mb-3" style={{ fontSize: 10 }}>Social</p>
-              <a href="https://instagram.com/" target="_blank" rel="noreferrer" className="block hover:opacity-70 transition-opacity">
+              <a href="https://instagram.com/" target="_blank" rel="noreferrer" className="block transition-colors">
                 Instagram
               </a>
-              <a href="#" className="block hover:opacity-70 transition-opacity mt-2">
+              <a href="#" className="block transition-colors mt-2">
                 Discord
               </a>
             </div>

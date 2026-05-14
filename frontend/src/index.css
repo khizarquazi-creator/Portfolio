@@ -182,6 +182,14 @@ html.light .btn-magnetic:hover {
     color: var(--text-secondary);
 }
 
+/* Subtle hover color change on text links */
+a:not(.btn-magnetic):not(.btn-ghost):not(.no-hover-color) {
+    transition: color 0.3s ease;
+}
+a:not(.btn-magnetic):not(.btn-ghost):not(.no-hover-color):hover {
+    color: var(--accent);
+}
+
 .muted {
     color: var(--text-secondary);
 }

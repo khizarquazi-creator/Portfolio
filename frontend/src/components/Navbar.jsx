@@ -50,8 +50,7 @@ export const Navbar = () => {
               <li key={label}>
                 <a
                   href={href}
-                  className="muted hover:opacity-100 transition-opacity"
-                  style={{ opacity: 0.75 }}
+                  className="muted transition-colors duration-300 nav-link"
                   data-testid={`nav-link-${label.toLowerCase()}`}
                 >
                   {label}

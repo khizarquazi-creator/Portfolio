@@ -10,7 +10,6 @@ export const Hero = ({ onContact }) => {
       data-testid="hero-section"
     >
       <div className="hero-glow" />
-      <div className="absolute inset-0 grid-bg opacity-[0.35]" aria-hidden="true" />
 
       <div className="relative max-w-7xl mx-auto px-5 sm:px-6 md:px-12 w-full flex-1 flex flex-col justify-center pt-28 sm:pt-32 pb-10 sm:pb-12">
         <motion.div
