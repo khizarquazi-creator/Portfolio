@@ -1,5 +1,6 @@
 import { ArrowUpRight } from "lucide-react";
 import { MagneticButton } from "./MagneticButton";
+import { SOCIALS } from "../lib/content";
 
 export const Footer = ({ onContact }) => {
   return (
@@ -25,19 +26,22 @@ export const Footer = ({ onContact }) => {
           <div className="md:col-span-4 md:col-start-9 grid grid-cols-2 gap-6 self-end text-[14px]">
             <div>
               <p className="eyebrow mb-3" style={{ fontSize: 10 }}>Contact</p>
-              <a href="mailto:hello@yousufhakim.com" className="block transition-colors">
-                hello@yousufhakim.com
+              <a href={SOCIALS.emailHref} className="block transition-colors" data-testid="footer-email">
+                {SOCIALS.email}
               </a>
-              <a href="https://wa.me/" target="_blank" rel="noreferrer" className="block transition-colors mt-2">
+              <a href={SOCIALS.whatsappHref} target="_blank" rel="noreferrer" className="block transition-colors mt-2" data-testid="footer-whatsapp">
                 WhatsApp
               </a>
             </div>
             <div>
               <p className="eyebrow mb-3" style={{ fontSize: 10 }}>Social</p>
-              <a href="https://instagram.com/" target="_blank" rel="noreferrer" className="block transition-colors">
+              <a href={SOCIALS.instagramHref} target="_blank" rel="noreferrer" className="block transition-colors" data-testid="footer-instagram">
                 Instagram
               </a>
-              <a href="#" className="block transition-colors mt-2">
+              <a href={SOCIALS.xHref} target="_blank" rel="noreferrer" className="block transition-colors mt-2" data-testid="footer-x">
+                X / Twitter
+              </a>
+              <a href={SOCIALS.discordHref} target="_blank" rel="noreferrer" className="block transition-colors mt-2" data-testid="footer-discord">
                 Discord
               </a>
             </div>

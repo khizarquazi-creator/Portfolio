@@ -1,19 +1,21 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { ArrowUpRight, Mail, MessageCircle, Instagram, Send } from "lucide-react";
+import { ArrowUpRight, Mail, MessageCircle, Instagram, Send, Twitter } from "lucide-react";
 import axios from "axios";
 import { toast } from "sonner";
 import { MagneticButton } from "../components/MagneticButton";
 import { Reveal } from "../components/Reveal";
+import { SOCIALS } from "../lib/content";
 
 const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
 const API = `${BACKEND_URL}/api`;
 
 const channels = [
-  { icon: Mail, label: "Email", value: "hello@yousufhakim.com", href: "mailto:hello@yousufhakim.com", testId: "contact-channel-email" },
-  { icon: Send, label: "WhatsApp", value: "Message on WhatsApp", href: "https://wa.me/", testId: "contact-channel-whatsapp" },
-  { icon: MessageCircle, label: "Discord", value: "@yousufhakim", href: "#", testId: "contact-channel-discord" },
-  { icon: Instagram, label: "Instagram", value: "@yousufhakim", href: "https://instagram.com/", testId: "contact-channel-instagram" },
+  { icon: Mail, label: "Email", value: SOCIALS.email, href: SOCIALS.emailHref, testId: "contact-channel-email" },
+  { icon: Send, label: "WhatsApp", value: SOCIALS.whatsapp, href: SOCIALS.whatsappHref, testId: "contact-channel-whatsapp" },
+  { icon: Twitter, label: "X / Twitter", value: SOCIALS.x, href: SOCIALS.xHref, testId: "contact-channel-x" },
+  { icon: Instagram, label: "Instagram", value: SOCIALS.instagram, href: SOCIALS.instagramHref, testId: "contact-channel-instagram" },
+  { icon: MessageCircle, label: "Discord", value: SOCIALS.discord, href: SOCIALS.discordHref, testId: "contact-channel-discord" },
 ];
 
 export default function Contact() {
