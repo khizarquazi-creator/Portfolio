@@ -105,12 +105,10 @@ export default function Contact() {
         >
           <p className="eyebrow mb-6">Get in touch</p>
           <h1 className="display text-4xl sm:text-5xl md:text-7xl lg:text-8xl tracking-[-0.045em] leading-[0.9]">
-            Let's make something{" "}
-            <span style={{ color: "var(--accent)" }}>worth watching.</span>
+            Let’s craft something worth remembering.
           </h1>
           <p className="muted mt-8 max-w-[52ch] text-[16px] md:text-[17px] leading-relaxed">
-            Share a few details about your project. I read every message and
-            reply within 48 hours — usually sooner.
+            Share a few details about your project. I read every message and reply within 48 hours — usually sooner.
           </p>
         </motion.div>
 

@@ -47,7 +47,7 @@ export const Footer = ({ onContact }) => {
 
         <div className="divider mt-16 mb-8" />
         <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4 muted text-[13px]">
-          <span>© {new Date().getFullYear()} Yousuf Hakim. All rights reserved.</span>
+          <span>© {new Date().getFullYear()} Khizar Quazi. All rights reserved.</span>
           <span className="eyebrow" style={{ fontSize: 10 }}>
             Premiere Pro · After Effects
           </span>

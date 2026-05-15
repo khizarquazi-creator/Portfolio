@@ -2,7 +2,7 @@ import { createContext, useCallback, useContext, useEffect, useState } from "rea
 
 const ThemeContext = createContext({ theme: "dark", toggle: () => {} });
 
-export function ThemeProvider({ children, defaultTheme = "dark" }) {
+export function ThemeProvider({ children, defaultTheme = "light" }) {
   const [theme, setTheme] = useState(defaultTheme);
 
   useEffect(() => {

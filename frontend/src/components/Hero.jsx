@@ -29,7 +29,7 @@ export const Hero = ({ onContact }) => {
           className="display uppercase text-[38px] sm:text-[64px] md:text-[88px] lg:text-[104px] xl:text-[112px] leading-[0.86] tracking-[-0.05em] max-w-[12ch]"
           data-testid="hero-headline"
         >
-          {"Creating high-retention edits for".split(" ").map((w, i) => (
+          {"Creating high-retention edits for brands, creators & trading businesses.".split(" ").map((w, i) => (
             <motion.span
               key={i}
               initial={{ opacity: 0, y: 60 }}
@@ -58,8 +58,7 @@ export const Hero = ({ onContact }) => {
           transition={{ duration: 0.8, delay: 0.7 }}
           className="muted mt-8 md:mt-12 max-w-[52ch] text-[15px] md:text-[17px] leading-relaxed"
         >
-          Long-form video editing for creators, businesses and personal brands.
-          Quiet, considered cuts. Clean motion. Stories that hold attention.
+          Long-form video editing for creators, businesses and personal brands. Quiet, considered cuts. Clean motion. Stories that hold attention.
         </motion.p>
 
         <motion.div

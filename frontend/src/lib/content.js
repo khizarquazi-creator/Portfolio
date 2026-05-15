@@ -20,7 +20,7 @@ export const PROJECTS = [
     title: "Andrej Edit",
     tag: "Long-form · Client",
     type: "direct",
-    href: "/andrej 02 edited.mp4",
+    href: "/andrej_02_edited.mp4",
     poster: "/adrian.jpg",
   },
   {
@@ -34,14 +34,14 @@ export const PROJECTS = [
     title: "Intro Sequence",
     tag: "Intro · Long-form",
     type: "direct",
-    href: "/intro .mp4",
+    href: "/intro.mp4",
     poster: "/system.jpg",
   },
   {
     title: "Trading Edit",
     tag: "Trading · Long-form",
     type: "direct",
-    href: "/tc trading pr 23 edited .mp4",
+    href: "/tc_trading_pr_23_edited.mp4",
     poster: "/trading.jpg",
   },
 ];

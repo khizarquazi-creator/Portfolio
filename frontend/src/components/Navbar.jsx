@@ -36,7 +36,7 @@ export const Navbar = () => {
             className="inline-block w-2 h-2 rounded-full"
             style={{ background: "var(--accent)" }}
           />
-          <span className="font-medium tracking-tight text-[15px]">Yousuf Hakim</span>
+          <span className="font-medium tracking-tight text-[15px]">Khizar Quazi</span>
         </Link>
 
         {onHome && (
