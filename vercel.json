@@ -5,6 +5,7 @@
   "buildCommand": "yarn build",
   "outputDirectory": "build",
   "installCommand": "yarn install",
+  // Force new deployment
   "rewrites": [
     { "source": "/(.*)", "destination": "/index.html" }
   ]
