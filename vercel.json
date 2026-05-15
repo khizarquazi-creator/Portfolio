@@ -1,10 +1,9 @@
 {
   "version": 2,
-  "rootDirectory": "frontend",
   "framework": null,
-  "buildCommand": "yarn build",
-  "outputDirectory": "build",
-  "installCommand": "yarn install",
+  "buildCommand": "cd frontend && yarn build",
+  "outputDirectory": "frontend/build",
+  "installCommand": "cd frontend && yarn install",
   "rewrites": [
     { "source": "/(.*)", "destination": "/index.html" }
   ]
